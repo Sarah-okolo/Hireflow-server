@@ -2,6 +2,13 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const { connectDB } = require('./db/connect');
+const { Permit } = require("@permitio/node");
+
+const permit = new Permit({
+  pdp: "https://cloudpdp.api.permit.io", // cloud PDP URL
+  token: process.env.PERMIT_API_KEY,     // my permit API key
+});
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
