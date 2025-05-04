@@ -19,7 +19,7 @@ app.use('/api/auth', authRoutes);
 
 // Test route
 app.get('/', (req, res) => {
-  res.send('Backend server is running 🚀');
+  res.send('Backend server is running 🚀💫⭐');
 });
 
 // Start server
