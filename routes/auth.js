@@ -80,9 +80,14 @@ router.post('/signup', async (req, res) => {
 
   try {
     const result = await usersCollection.insertOne(userData);
-    const token = jwt.sign({ userId: result.insertedId }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    // Prepare full user data to return (excluding password)
+    const permitUserId = `${role}_${result.insertedId}`;
+    const token = jwt.sign(
+      { id: permitUserId, role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
     const { password: _, ...userWithoutPassword } = {
       _id: result.insertedId,
       ...userData
@@ -118,7 +123,12 @@ router.post('/login', async (req, res) => {
     return res.status(401).json({ error: 'Invalid credentials' });
   }
 
-  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  const permitUserId = `${user.role}_${user._id}`;
+  const token = jwt.sign(
+    { id: permitUserId, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: '1h' }
+  );
 
   const { password: _, ...userWithoutPassword } = user;
 

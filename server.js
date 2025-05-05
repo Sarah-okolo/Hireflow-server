@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const { connectDB } = require('./db/connect');
-const { Permit } = require("@permitio/node");
+const { Permit } = require("permitio");
 
 const permit = new Permit({
   pdp: "https://cloudpdp.api.permit.io", // cloud PDP URL
@@ -44,5 +44,19 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
+
+const jobsRoutes = require('./routes/jobs');
+const appsRoutes = require('./routes/applications');
+const companiesRoutes = require('./routes/companies');
+const recruitersRoutes = require('./routes/recruiters');
+const candidatesRoutes = require('./routes/candidates'); 
+
+app.use('/jobs', jobsRoutes);
+app.use('/applications', appsRoutes);
+app.use('/companies', companiesRoutes);
+app.use('/recruiters', recruitersRoutes);
+app.use('/candidates', candidatesRoutes); 
+
+
 
 module.exports = app;
