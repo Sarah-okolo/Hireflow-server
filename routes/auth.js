@@ -59,12 +59,11 @@ router.post('/signup', async (req, res) => {
       return res.status(400).json({ error: 'Company ID is required for recruiter accounts' });
     }
 
-    let validCompanyId;
-    try {
-      validCompanyId = new ObjectId(companyId);
-    } catch {
-      return res.status(400).json({ error: 'Invalid company ID format' });
+    if (!ObjectId.isValid(companyId)) {
+      return res.status(400).json({ error: 'Invalid company ID' });
     }
+    
+    const validCompanyId = new ObjectId(companyId);
 
     const companyExists = await usersCollection.findOne({
       role: 'company',
