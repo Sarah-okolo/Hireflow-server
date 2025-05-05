@@ -6,16 +6,16 @@
 
 ## Table of Contents
 
+## Table of Contents
+
 - [Features](#features)
 - [Demo](#demo)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Frontend Setup](#frontend-setup)
-  - [Backend Setup](#backend-setup)
 - [Authorization with Permit.io](#authorization-with-permitio)
-- [Test Accounts](#test-accounts)
+- [Permit.io Over Traditional Role Checks](#permitio-over-traditional-role-checks)
+ - [With Traditional Role Checks](#with-traditional-role-checks)
+ - [With Permit.io](#with-permitio)
+ - [Quick Comparison](#quick-comparison)
 - [Technologies Used](#technologies-used)
-- [License](#license)
 
 ---
 
@@ -79,15 +79,12 @@ Company|recruiters:delete|jobs:read|jobs:delete|candidates:read|companies:delete
 Candidate|jobs:read|applications:create|applications:read, 
 Recruiter|jobs:create|jobs:read|jobs:delete|applications:read|applications:reject|applications:shortlist
 ```
-![configure roles and permissions](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cv25wuiz172ybjr2rzgl.png)
 
 Next, my request was processed:
-![request processing](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iwz5v2zolifrzii4nqbp.png)
 
 - **Created 3 users and assigned each to their roles**:
 I assigned all 3 users to their different roles:
 ![Assigning users to roles](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nmn5ln7yy6e8trdccx9d.png)
-Next, I was prompted to enforce a PDP.
 
 - **PDP (Policy Decision Point) setup**:
 I skipped the part where I’d have to enforce a self-hosted PDP because I chose to use Permit’s cloud-hosted PDP instead — simpler and faster for my current needs.
