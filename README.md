@@ -6,8 +6,6 @@
 
 ## Table of Contents
 
-## Table of Contents
-
 - [Features](#features)
 - [Demo](#demo)
 - [Authorization with Permit.io](#authorization-with-permitio)
